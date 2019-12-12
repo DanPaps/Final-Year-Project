@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="utf-8" />
+                <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
+                <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                <title>Hotel | Ghana hotels bookman</title>
+                <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+                <meta name="viewport" content="width=device-width" />
+            
+                <!-- update the version number as needed -->
+                <script defer src="/__/firebase/4.13.0/firebase-app.js"></script>
+                <!-- include only the Firebase features as you need -->
+                <script defer src="/__/firebase/4.13.0/firebase-auth.js"></script>
+                <script defer src="/__/firebase/4.13.0/firebase-database.js"></script>
+                <script defer src="/__/firebase/4.13.0/firebase-messaging.js"></script>
+                <script defer src="/__/firebase/4.13.0/firebase-storage.js"></script>
+                <!-- initialize the SDK after all desired features are loaded -->
+                <script defer src="/__/firebase/init.js"></script>
+            
+                 <!-- Bootstrap core CSS     -->
+                 <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+                 <!--  Material Dashboard CSS    -->
+                 <link href="./assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+                 <!--  CSS for Demo Purpose, don't include it in your project     -->
+                 <link href="./assets/css/demo.css" rel="stylesheet" />
+                 <link rel="stylesheet" href="./assets/css/index.css">
+                 <!--     Fonts and icons     -->
+                 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+                 <link href='http://fonts.googleapis.com/css?family=Nunito+Sans|Material+Icons' rel='stylesheet' type='text/css'>
+          
+                 <style>
+                        #map {
+                         height: 400px;
+                         width: 100%;
+                        }
+                     </style>
+               
+              </head>
+<body>
+    <!-- wrapper -->
+    <div class="wrapper">
+            <div class="main" style="padding-top: 25px;">
+                    <!-- main container -->
+                    <div class="content">
+                        <div class="container-fluid">
+                            <!-- fields row -->
+
+                            <div class="row">
+                                <!-- details row -->
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header" data-background-color="purple">
+                                            <h4 class="title">Edit Profile</h4>
+                                            <p class="category">Complete your profile</p>
+                                        </div>
+                                        <div class="card-content">
+                                            <form>
+                                                <!-- hotel name -->
+                                                <div class="row">                                                    
+                                                    <div class="col-md-4">
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Hotel Name (disabled)</label>
+                                                            <input id="name_field" type="text" value="Loading...Please wait" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <!-- location -->
+                                                    <div class="col-md-5">
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Location (disabled)</label>
+                                                            <input id="location_field" value="Click on the map to update your current location" type="text" class="form-control" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <!-- ratings -->
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label"> ratings (1-5)</label>
+                                                                <input type="number" value="3" id="ratings_field" class="form-control" ></input>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+
+                                                <div class="row">
+                                                    <!-- about us -->
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label"> About Us</label>
+                                                                <textarea id="about_field" value="Loading...Please wait" class="form-control" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            
+                                                <!-- Row 3 -->
+                                                <div class="row">
+                                                       <div class="card">
+                                                           <div class="card-body">
+                                                                <div class="map" id="map">
+                                                               
+                                                                    </div>
+                                                           </div>
+                                                       </div>
+                                                    </div>
+                                                <button id="update_profile" type="submit" class="btn btn-primary pull-right">Update Hotel Details </button>
+                                                <div class="clearfix"></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- profile row -->
+                                <div class="col-md-4">
+                                    <div class="card card-profile">
+                                        <div class="card-avatar">
+                                            <a href="#pablo">
+                                                <img id="profile_hotel_img" class="img" src="./assets/img/faces/marc.jpg" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h6 id="profile_hotel_name" class="category text-gray">Some hotel name</h6>
+                                            <h4 id="profile_hotel_ratings" class="card-title">Ratings: 3 stars</h4>
+                                            <p id="profile_hotel_details" class="card-content">
+                                                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                            </p>
+                                            <br>
+                                            <br>
+                                            <div class="text-center">
+                                                    <input type="file" style="display:none;" id="inputfile" onchange="$('#selected_picture_name').text(this.files.item(0).name)" accept=".jpg, .jpeg, .png, .gif" required/>
+                                                    <a href="javascript:document.getElementById('inputfile').click();" class="btn btn-primary text-center" data-background-color="green">Add Face Of Hotel</a>
+                                                    <p id="selected_picture_name"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <nav class="pull-right">
+                                <ul>
+                                    <li>
+                                        <a class="bookman-hotel-ref" href="reservations.html">
+                                                <i class="material-icons">book</i>
+                                            Reservations
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="rooms.html">
+                                                <i class="material-icons">hotel</i>
+                                            Rooms
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="assets.html">
+                                                <i class="material-icons">group_work</i>
+                                            Assets
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                    </footer>
+
+                     <!-- Modal -->
+                    <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="authModalLabel">An error Occured</h5>
+                            
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <p id="error_content"></p>
+        
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" style="background-color:rgb(5, 182, 129)" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+    </div>
+
+
+
+
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyAiR-RkNrv2DSnV41fniJ57g6NeV431eG8",
+            authDomain: "newghanahotelbookman.firebaseapp.com",
+            databaseURL: "https://newghanahotelbookman.firebaseio.com",
+            projectId: "newghanahotelbookman",
+            storageBucket: "newghanahotelbookman.appspot.com",
+            messagingSenderId: "356801406295"
+          };
+          firebase.initializeApp(config);
+        </script>
+
+
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="./assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="./assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/material.min.js" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="./assets/js/chartist.min.js"></script>
+<!--  Dynamic Elements plugin -->
+<script src="./assets/js/arrive.min.js"></script>
+<!--  PerfectScrollbar Library -->
+<script src="./assets/js/perfect-scrollbar.jquery.min.js"></script>
+<!-- google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBNPZAUL7sUDsUXu-x7Id6zueHGA2jAOt4"
+      async defer></script>
+<!--  Notifications Plugin    -->
+<script src="./assets/js/bootstrap-notify.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="./assets/js/material-dashboard.js?v=1.2.0"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="./assets/js/demo.js"></script>
+  <!-- custom js -->
+  <script src="./assets/js/hotel.js"></script>
+</html>
