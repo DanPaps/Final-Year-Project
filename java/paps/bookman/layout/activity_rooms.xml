@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="paps.bookman.ui.RoomsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_dark"
+        android:theme="@style/Bookman.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:popupTheme="@style/Bookman.PopupOverlay"
+        app:title="Check-In Options" />
+
+    <ImageView
+        android:id="@+id/no_rooms"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/empty_state_no_room"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:ignore="ContentDescription" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/room_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/shot_collapsed_app_bar_height"
+                    android:foreground="@color/mid_grey"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/double_room" />
+
+                <TextView
+                    android:id="@+id/room_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans"
+                    android:fontFeatureSettings="onum,smcp"
+                    android:gravity="start"
+                    android:padding="@dimen/spacing_normal"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    tools:text="Room Number 120" />
+
+                <TextView
+                    android:id="@+id/floor_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/nunito_sans"
+                    android:fontFeatureSettings="onum"
+                    android:textColor="@color/text_secondary_dark"
+                    android:textSize="18sp"
+                    tools:text="Floor: 12" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_normal">
+
+
+                </FrameLayout>
+
+
+                <Button
+                    android:id="@+id/check_in"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:background="@color/background_super_dark"
+                    android:text="Check in"
+                    android:textColor="@color/text_primary_light" />
+
+
+            </LinearLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

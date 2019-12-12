@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edt_profile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_normal"
+    android:fontFamily="@font/nunito_sans"
+    android:hint="Enter your details here"
+    android:inputType="text"
+    android:padding="@dimen/spacing_normal"
+    android:textColor="@color/text_secondary_dark" />

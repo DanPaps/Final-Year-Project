@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@color/transparent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/header_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@color/mid_grey"
+        android:src="@color/content_placeholder" />
+
+    <ImageView
+        android:id="@+id/header_picture"
+        android:layout_width="@dimen/avatar_bounds"
+        android:layout_height="@dimen/avatar_bounds"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_normal"
+        android:src="@drawable/avatar_placeholder"
+        app:layout_constraintBottom_toTopOf="@id/header_username"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/header_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:fontFamily="@font/nunito_sans"
+        android:paddingTop="@dimen/padding_normal"
+        android:text="@string/app_name"
+        android:textColor="@color/text_primary_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/header_email"
+        tools:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/header_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_normal"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:fontFamily="@font/nunito_sans"
+        android:textColor="@color/text_secondary_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="@string/app_name" />
+
+</android.support.constraint.ConstraintLayout>

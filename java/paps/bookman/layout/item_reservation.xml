@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_normal"
+    android:padding="@dimen/spacing_normal">
+
+    <ImageView
+        android:id="@+id/res_image"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:src="@drawable/avatar_placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/res_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_micro"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="start"
+        android:maxLines="1"
+        android:padding="@dimen/spacing_micro"
+        android:textColor="@color/text_primary_dark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/res_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Some hotel name" />
+
+    <TextView
+        android:id="@+id/res_key"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="start"
+        android:maxLines="1"
+        android:textColor="@color/accent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/res_image"
+        app:layout_constraintTop_toBottomOf="@id/res_name"
+        tools:text="Reservation Key: asldljashashdajsdhjad" />
+
+    <TextView
+        android:id="@+id/res_floor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_micro"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="start"
+        android:maxLines="1"
+        android:padding="@dimen/spacing_micro"
+        android:textColor="@color/text_secondary_dark"
+        app:layout_constraintStart_toEndOf="@id/res_image"
+        app:layout_constraintTop_toBottomOf="@id/res_key"
+        tools:text="Floor #: 23" />
+
+    <TextView
+        android:id="@+id/res_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="start"
+        android:maxLines="1"
+        android:padding="@dimen/spacing_micro"
+        android:textColor="@color/text_secondary_dark"
+        app:layout_constraintStart_toEndOf="@id/res_floor"
+        app:layout_constraintTop_toBottomOf="@id/res_key"
+        tools:text="Room #: 12" />
+
+    <Button
+        android:id="@+id/res_cancel"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_reservation"
+        android:textColor="@color/dribbble_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/res_room" />
+
+
+</android.support.constraint.ConstraintLayout>
